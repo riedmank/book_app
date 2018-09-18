@@ -27,10 +27,14 @@ app.get('/books', (req, res) => {
     .then((data) => {
       res.render('index.ejs', { sayHi: 'Hey there!', books: data.rows })
     })
+    .catch(err => {
+      res.send(err);
+    })
 });
 
-app.get('/', (request, response) => {
-  response.send('server is working!');
+app.get('*', (req, res) => {
+  res.statusCode = 404;
+  res.send('404, page not found')
 });
 
 app.listen(PORT, () => {

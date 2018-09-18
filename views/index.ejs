@@ -16,8 +16,8 @@
   <h1>
     <%= sayHi %>
   </h1>
-  <ul>
-    <% books.forEach(book => { %>
+  <% books.forEach(book => { %>
+    <ul>
       <img src=<%=book.image_url %> alt="image">
       <li>
         <%= book.title %>
@@ -28,8 +28,8 @@
       <li>
         <%= book.description %>
       </li>
-      <% }) %>
-  </ul>
+    </ul>
+    <% }) %>
 </body>
 
 </html>
