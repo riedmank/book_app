@@ -16,6 +16,9 @@
   <h1>
     <%= sayHi %>
   </h1>
+  <h2>Total books:
+    <%= books.length %>
+  </h2>
   <% books.forEach(book => { %>
     <ul>
       <img src=<%=book.image_url %> alt="image">
@@ -24,9 +27,6 @@
       </li>
       <li>
         <%= book.author %>
-      </li>
-      <li>
-        <%= book.description %>
       </li>
     </ul>
     <% }) %>

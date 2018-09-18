@@ -22,8 +22,12 @@ app.use(express.static('./public'));
 
 app.set('view engine', 'ejs');
 
+app.get('/', (req, res) => {
+  res.redirect('/books')
+});
+
 app.get('/books', (req, res) => {
-  client.query('SELECT * FROM books')
+  client.query('SELECT title, author, image_url FROM books')
     .then((data) => {
       res.render('index.ejs', { sayHi: 'Hey there!', books: data.rows })
     })
