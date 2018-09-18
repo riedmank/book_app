@@ -17,13 +17,24 @@ client.on('error', error => {
 });
 
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('./public'));
 
 app.set('view engine', 'ejs');
 
-app.get('/', (request, response) => {
-  response.send('server is working!');
+app.get('/books', (req, res) => {
+  client.query('SELECT * FROM books')
+    .then((data) => {
+      res.render('index.ejs', { sayHi: 'Hey there!', books: data.rows })
+    })
+    .catch(err => {
+      res.send(err);
+    })
+});
+
+app.get('*', (req, res) => {
+  res.statusCode = 404;
+  res.send('404, page not found')
 });
 
 app.listen(PORT, () => {
