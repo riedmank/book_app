@@ -2,24 +2,26 @@
 <html>
 <%- include('partials/head') %>
 
-<body>
-  <h1>
-    <%= sayHi %>
-  </h1>
-  <h2>Total books:
-    <%= books.length %>
-  </h2>
-  <% books.forEach(book => { %>
-    <ul>
-      <img src=<%=book.image_url %> alt="image">
-      <li>
-        <a href="/books/<%=book.book_id %>"><%= book.title %></a>
-      </li>
-      <li>
-        <%= book.author %>
-      </li>
-    </ul>
-    <% }) %>
-</body>
+  <body>
+    <h1>
+
+    </h1>
+    <h2>Total books:
+      <%= books.length %>
+    </h2>
+    <% books.forEach(book => { %>
+      <ul>
+        <img src=<%=book.image_url %> alt="image">
+        <li>
+          <a href="/books/<%=book.book_id %>">
+            <%= book.title %>
+          </a>
+        </li>
+        <li>
+          <%= book.author %>
+        </li>
+      </ul>
+      <% }) %>
+  </body>
 
 </html>
