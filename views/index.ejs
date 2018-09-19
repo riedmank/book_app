@@ -23,7 +23,7 @@
     <ul>
       <img src=<%=book.image_url %> alt="image">
       <li>
-        <%= book.title %>
+        <a href="/books/<%=book.book_id %>"><%= book.title %></a>
       </li>
       <li>
         <%= book.author %>
