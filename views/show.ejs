@@ -5,12 +5,14 @@
   <body>
 
     <h1><a href="/"><%= title %></a></h1>
+    <div class="card">
+      <img src=<%= oneBook.image_url %>/>
+      <h3 class="card-title"><%= oneBook.title %></h3>
+      <h4 class="card-author"><%= oneBook.author %></h4>
+      <p class="card-text"><%= oneBook.description %></p>
 
-    <h3><%= oneBook.title %></h3>
-    <h4><%= oneBook.author %></h4>
-    <img src=<%= oneBook.image_url %>/>
-    <p><%= oneBook.isbn %></p>
-    <p><%= oneBook.description %></p>
-
+      <p class="card-isbn"><%= oneBook.isbn %></p>
+    </div>
+    
   </body>
 </html>

@@ -1,0 +1,38 @@
+.cover {
+  margin: 0 auto;
+}
+
+.card {
+  width: 350px;
+  background-color: #dddddd;
+  margin: 0 auto;
+  height: 550px;
+  text-align: center;
+  padding: 15px;
+  box-shadow: 1px 1px 5px;
+  box-sizing: border-box;
+}
+
+.card-text {
+  margin: 0 auto;
+  width: 90%;
+  overflow: auto;
+  background-color: #eeeeee;
+  text-align: left;
+  height: 200px;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.card-author {
+  font-weight: lighter;
+  margin: 5px;
+}
+
+.card-title {
+  margin: 5px;
+}
+
+.card-isbn {
+  margin: 15px;
+}
