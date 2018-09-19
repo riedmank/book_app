@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<%- include('partials/head') -%>
+
+  <body>
+
+    <h1><a href="/"><%= title %></a></h1>
+    <div class="card">
+      <img src=<%= oneBook.image_url %>/>
+      <h3 class="card-title"><%= oneBook.title %></h3>
+      <h4 class="card-author"><%= oneBook.author %></h4>
+      <p class="card-text"><%= oneBook.description %></p>
+
+      <p class="card-isbn"><%= oneBook.isbn %></p>
+    </div>
+    
+  </body>
+</html>
