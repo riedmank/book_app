@@ -13,6 +13,12 @@
   box-sizing: border-box;
 }
 
+.in-block {
+  display: inline-block;
+  margin: 5px auto;
+  height: 400px;
+}
+
 .card-text {
   margin: 0 auto;
   width: 90%;
@@ -35,4 +41,16 @@
 
 .card-isbn {
   margin: 15px;
+}
+
+.card-button {
+  background-color: black;
+  width: 170px;
+  height: 50px;
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  line-height: 50px;
+  font-weight: lighter;
+  margin-top: 40px;
 }

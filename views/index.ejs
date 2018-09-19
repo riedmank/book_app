@@ -6,19 +6,17 @@
     <h2>Total books:
       <%= books.length %>
     </h2>
-    <% books.forEach(book => { %>
-      <ul>
-        <img src=<%=book.image_url %> alt="image">
-        <li>
-          <a href="/books/<%=book.book_id %>">
-            <%= book.title %>
-          </a>
-        </li>
-        <li>
-          <%= book.author %>
-        </li>
-      </ul>
+    <section class="books">
+      <% books.forEach(book => { %>
+        <div class="card in-block">
+          <img src=<%=book.image_url %> alt="image">
+          <h3 class="card-title"><%= book.title %></h3>
+          <h4 class="card-author"><%= book.author %></h4>
+  
+          <a class="card-button" href="/books/<%=book.book_id %>">More Details</a>
+        </div>
       <% }) %>
+    </section>
   </body>
 
 </html>
