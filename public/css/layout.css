@@ -29,16 +29,23 @@ i.dropdown {
   font-size: 3em;
   color: white;
   display: none;
+  line-height: 70px;
+}
+
+label {
+  display: inline-block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  width: 100%;
 }
 
 i > div.dropdown-content > a {
   font-size: .3em;
+  line-height: 30px;
 }
 
 @media (max-width: 475px) {
   i.dropdown {
-    font-size: 3em;
-    color: white;
     display: inline-block;
   }
 }

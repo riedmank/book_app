@@ -59,6 +59,12 @@
   cursor: pointer;
 }
 
+
+.card input, textarea{
+  width: 100%;
+  clear: both;
+}
+
 @media (max-width: 475px) {
   a.menu {
     display: none;
