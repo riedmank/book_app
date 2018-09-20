@@ -16,7 +16,7 @@ const getOneBook = (req, res) => {
     } else if(!result.rows.length) {
       res.render('error', {err: '404 cannot find file'});
     } else {
-      res.render('show', { title: 'All Books', oneBook: result.rows[0] })
+      res.render('show', { title: 'All Books', oneBook: result.rows[0], added: !!req.query.added })
     }
   });
 }
@@ -39,10 +39,11 @@ const newBook = (req, res) => {
     if (err) {
       res.render('error', {err: err});
     } else {
-      res.redirect(`/books/${result.rows[0].book_id}`)
+      res.redirect(`/books/${result.rows[0].book_id}?added=true`);
     }
   })
 }
+
 module.exports = {
   getOneBook: getOneBook,
   getAllBooks: getAllBooks,
