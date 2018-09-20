@@ -54,3 +54,48 @@
   font-weight: lighter;
   margin-top: 40px;
 }
+
+.card-button:hover {
+  cursor: pointer;
+}
+
+
+.card input, textarea{
+  width: 100%;
+  clear: both;
+}
+
+@media (max-width: 475px) {
+  a.menu {
+    display: none;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: gray;
+    padding: 11px 15px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #eeeeee;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+}
