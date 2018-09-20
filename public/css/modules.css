@@ -54,3 +54,7 @@
   font-weight: lighter;
   margin-top: 40px;
 }
+
+.card-button:hover {
+  cursor: pointer;
+}

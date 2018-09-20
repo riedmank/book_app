@@ -1,6 +1,6 @@
 'use strict';
 
-const books = require('./books.js')
+const books = require('./books')
 const express = require('express');
 const ejs = require('ejs');
 
@@ -14,13 +14,18 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-  res.redirect('/books')
+  res.redirect('/books');
+});
+
+app.get('/books/new', (req, res) => {
+  res.render('new');
 });
 
 app.get('/books/:id', books.getOneBook);
 
 app.get('/books', books.getAllBooks);
 
+app.post('/books', books.newBook);
 app.get('*', (req, res) => {
   res.statusCode = 404;
   res.send('404, page not found')

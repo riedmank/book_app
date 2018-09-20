@@ -32,7 +32,19 @@ const getAllBooks = (req, res) => {
   });
 }
 
+const newBook = (req, res) => {
+  let SQL = 'INSERT INTO books (author, title, isbn, image_url, description) VALUES($1, $2, $3, $4, $5) RETURNING book_id;';
+  let values = [req.body.author, req.body.title, req.body.isbn, req.body.image_url, req.body.description];
+  client.query(SQL, values, (err, result) => {
+    if (err) {
+      res.render('error', {err: err});
+    } else {
+      res.redirect(`/books/${result.rows[0].book_id}`)
+    }
+  })
+}
 module.exports = {
   getOneBook: getOneBook,
-  getAllBooks: getAllBooks
+  getAllBooks: getAllBooks,
+  newBook: newBook
 }
