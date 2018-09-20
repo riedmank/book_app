@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
-<%- include('partials/head') %>
-
+  <%- include('partials/head') %>
   <body>
     <h2>Total books:
       <%= books.length %>
@@ -12,11 +11,9 @@
           <img src=<%=book.image_url %> alt="image">
           <h3 class="card-title"><%= book.title %></h3>
           <h4 class="card-author"><%= book.author %></h4>
-  
           <a class="card-button" href="/books/<%=book.book_id %>">More Details</a>
         </div>
       <% }) %>
     </section>
   </body>
-
 </html>
