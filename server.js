@@ -21,7 +21,6 @@ app.get('/books/:id', books.getOneBook);
 
 app.get('/books', books.getAllBooks);
 
-
 app.get('*', (req, res) => {
   res.statusCode = 404;
   res.send('404, page not found')
@@ -30,4 +29,3 @@ app.get('*', (req, res) => {
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}!`);
 });
-
