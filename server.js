@@ -18,14 +18,23 @@ app.get('/', (req, res) => {
 });
 
 app.get('/books/new', (req, res) => {
-  res.render('new');
+  res.render('pages/books/new');
 });
 
-app.get('/books/:id', books.getOneBook);
 
 app.get('/books', books.getAllBooks);
 
+app.get('/books/search', books.searchBook);
+
+app.get('/books/:id', books.getOneBook);
+
+app.get('/searches', (req, res) => {
+  res.render('pages/search/new');
+});
+
+
 app.post('/books', books.newBook);
+
 app.get('*', (req, res) => {
   res.statusCode = 404;
   res.send('404, page not found')
