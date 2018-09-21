@@ -18,7 +18,7 @@ const getOneBook = (req, res) => {
     } else if(!result.rows.length) {
       res.render('error', {err: '404 cannot find file'});
     } else {
-      res.render('show', { title: 'All Books', oneBook: result.rows[0], added: !!req.query.added })
+      res.render('pages/books/show', { title: 'All Books', oneBook: result.rows[0], added: !!req.query.added })
     }
   });
 }
@@ -37,6 +37,7 @@ const getAllBooks = (req, res) => {
 const newBook = (req, res) => {
   let SQL = 'INSERT INTO books (author, title, isbn, image_url, description) VALUES($1, $2, $3, $4, $5) RETURNING book_id;';
   let values = [req.body.author, req.body.title, req.body.isbn, req.body.image_url, req.body.description];
+  console.log(values);
   client.query(SQL, values, (err, result) => {
     if (err) {
       res.render('error', {err: err});
@@ -47,10 +48,10 @@ const newBook = (req, res) => {
 }
 
 const searchBook = (req, res) => {
-  superagent.get(`https://www.googleapis.com/books/v1/volumes?q=${req.query.query}`)
+  superagent.get(`https://www.googleapis.com/books/v1/volumes?q=${req.query.q}`)
     .end( (err, apiResponse) => {
       let books = apiResponse.body.items.map(book => ({
-        author: book.volumeInfo.publisher || book.volumeInfo.authors[0],
+        author: book.volumeInfo.authors ? book.volumeInfo.authors[0] : book.volumeInfo.publisher,
         title: book.volumeInfo.title,
         image_url: book.volumeInfo.imageLinks.smallThumbnail,
         description: book.volumeInfo.description,
