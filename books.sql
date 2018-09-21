@@ -5,7 +5,7 @@ books(
   title VARCHAR(256),
   isbn VARCHAR(256),
   image_url VARCHAR(256),
-  description VARCHAR(2048)
+  description TEXT
 );
 
 INSERT INTO books(author, title, isbn, image_url, description)

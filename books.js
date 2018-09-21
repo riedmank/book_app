@@ -47,7 +47,7 @@ const newBook = (req, res) => {
 }
 
 const searchBook = (req, res) => {
-  superagent.get(`https://www.googleapis.com/books/v1/volumes?q=${req.query.q}`)
+  superagent.get(`https://www.googleapis.com/books/v1/volumes?q=${req.query.searchParam}${req.query.q}`)
     .end( (err, apiResponse) => {
       let books = apiResponse.body.items.map(book => ({
         author: (book.volumeInfo.authors && book.volumeInfo.authors[0]) || 'unknown',
