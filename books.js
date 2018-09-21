@@ -8,7 +8,6 @@ client.connect();
 client.on('error', error => console.error(error));
 const superagent = require('superagent');
 
-
 const getOneBook = (req, res) => {
   let SQL = 'SELECT * FROM books WHERE book_id = $1';
   let values = [req.params.id];
@@ -18,7 +17,7 @@ const getOneBook = (req, res) => {
     } else if(!result.rows.length) {
       res.render('error', {err: '404 cannot find file'});
     } else {
-      res.render('pages/books/show', { title: 'All Books', oneBook: result.rows[0], added: !!req.query.added })
+      res.render('pages/books/show', { title: 'All Books', book: result.rows[0], added: !!req.query.added })
     }
   });
 }
@@ -37,7 +36,6 @@ const getAllBooks = (req, res) => {
 const newBook = (req, res) => {
   let SQL = 'INSERT INTO books (author, title, isbn, image_url, description) VALUES($1, $2, $3, $4, $5) RETURNING book_id;';
   let values = [req.body.author, req.body.title, req.body.isbn, req.body.image_url, req.body.description];
-  console.log(values);
   client.query(SQL, values, (err, result) => {
     if (err) {
       res.render('error', {err: err});
@@ -48,18 +46,18 @@ const newBook = (req, res) => {
 }
 
 const searchBook = (req, res) => {
-  superagent.get(`https://www.googleapis.com/books/v1/volumes?q=${req.query.q}`)
+  superagent.get(`https://www.googleapis.com/books/v1/volumes?q=${req.query.searchParam}${req.query.q}`)
     .end( (err, apiResponse) => {
       let books = apiResponse.body.items.map(book => ({
-        author: book.volumeInfo.authors ? book.volumeInfo.authors[0] : book.volumeInfo.publisher,
+        author: (book.volumeInfo.authors && book.volumeInfo.authors[0]) || 'unknown',
         title: book.volumeInfo.title,
-        image_url: book.volumeInfo.imageLinks.smallThumbnail,
+        image_url: (book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.smallThumbnail) || 'http://www.piniswiss.com/wp-content/uploads/2013/05/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef-300x199.png',
         description: book.volumeInfo.description,
-        isbn:  book.volumeInfo.industryIdentifiers[0].type + ' ' + book.volumeInfo.industryIdentifiers[0].identifier}));
-      console.log(books);
+        isbn:  book.volumeInfo.industryIdentifiers ? book.volumeInfo.industryIdentifiers[0].type + book.volumeInfo.industryIdentifiers[0].identifier : 'unknown'}));
       res.render('pages/search/show', {books: books});
     })
 }
+
 module.exports = {
   getOneBook: getOneBook,
   getAllBooks: getAllBooks,

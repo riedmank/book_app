@@ -21,7 +21,6 @@ app.get('/books/new', (req, res) => {
   res.render('pages/books/new');
 });
 
-
 app.get('/books', books.getAllBooks);
 
 app.get('/books/search', books.searchBook);
@@ -31,7 +30,6 @@ app.get('/books/:id', books.getOneBook);
 app.get('/searches', (req, res) => {
   res.render('pages/search/new');
 });
-
 
 app.post('/books', books.newBook);
 

@@ -59,10 +59,13 @@
   cursor: pointer;
 }
 
-
 .card input, textarea{
   width: 100%;
   clear: both;
+}
+
+.card .radio .rad-but {
+  width: 20px;
 }
 
 @media (max-width: 475px) {
