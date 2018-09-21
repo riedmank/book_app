@@ -36,7 +36,6 @@ const getAllBooks = (req, res) => {
 const newBook = (req, res) => {
   let SQL = 'INSERT INTO books (author, title, isbn, image_url, description) VALUES($1, $2, $3, $4, $5) RETURNING book_id;';
   let values = [req.body.author, req.body.title, req.body.isbn, req.body.image_url, req.body.description];
-  console.log(values);
   client.query(SQL, values, (err, result) => {
     if (err) {
       res.render('error', {err: err});
@@ -55,7 +54,6 @@ const searchBook = (req, res) => {
         image_url: (book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.smallThumbnail) || 'http://www.piniswiss.com/wp-content/uploads/2013/05/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef-300x199.png',
         description: book.volumeInfo.description,
         isbn:  book.volumeInfo.industryIdentifiers ? book.volumeInfo.industryIdentifiers[0].type + book.volumeInfo.industryIdentifiers[0].identifier : 'unknown'}));
-      console.log(books);
       res.render('pages/search/show', {books: books});
     })
 }

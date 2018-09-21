@@ -5,9 +5,11 @@
     <%- include('../../partials/header') %>
     <div class="card">
       <form action="/books/search" method="GET">
-        <label>By Title: <input type="radio" name="searchParam" value="intitle:" /></label>
-        <label>By Author: <input type="radio" name="searchParam" value="inauthor:" /></label>
         <label>Search: <input class="input-field" type="text" name="q" required /></label>
+        <div class="radio">
+          <label>By Title: <input class="rad-but" type="radio" name="searchParam" value="intitle:" /></label>
+          <label>By Author: <input class="rad-but" type="radio" name="searchParam" value="inauthor:" /></label>
+        </div>
         <input type="submit" class="card-button">
       </form>
     </div>

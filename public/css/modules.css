@@ -65,6 +65,10 @@
   clear: both;
 }
 
+.card .radio .rad-but {
+  width: 20px;
+}
+
 @media (max-width: 475px) {
   a.menu {
     display: none;
