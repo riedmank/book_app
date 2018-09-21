@@ -3,16 +3,13 @@
   <%- include('../../partials/head') %>
   <body>
     <%- include('../../partials/header') %>
-    <h1><a href="/"><%= title %></a></h1>
     <% if (added) { %>
       <h1>Success! Enjoy your new book.</h1>
     <% } %>
     <div class="card">
-      <img src=<%= oneBook.image_url %>/>
-      <h3 class="card-title"><%= oneBook.title %></h3>
-      <h4 class="card-author"><%= oneBook.author %></h4>
-      <p class="card-text"><%= oneBook.description %></p>
-      <p class="card-isbn"><%= oneBook.isbn %></p>
+      <%- include('../../partials/bookCard', {book: book}) %>
+      <p class="card-text"><%= book.description %></p>
+      <p class="card-isbn"><%= book.isbn %></p>
     </div>
   </body>
 </html>

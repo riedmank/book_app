@@ -17,7 +17,7 @@ const getOneBook = (req, res) => {
     } else if(!result.rows.length) {
       res.render('error', {err: '404 cannot find file'});
     } else {
-      res.render('pages/books/show', { title: 'All Books', oneBook: result.rows[0], added: !!req.query.added })
+      res.render('pages/books/show', { title: 'All Books', book: result.rows[0], added: !!req.query.added })
     }
   });
 }
