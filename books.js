@@ -47,11 +47,16 @@ const newBook = (req, res) => {
 }
 
 const searchBook = (req, res) => {
-  console.log(req.query.query);
   superagent.get(`https://www.googleapis.com/books/v1/volumes?q=${req.query.query}`)
     .end( (err, apiResponse) => {
-      console.log(apiResponse.body.items);
-      res.redirect('/');
+      let books = apiResponse.body.items.map(book => ({
+        author: book.volumeInfo.publisher || book.volumeInfo.authors[0],
+        title: book.volumeInfo.title,
+        image_url: book.volumeInfo.imageLinks.smallThumbnail,
+        description: book.volumeInfo.description,
+        isbn:  book.volumeInfo.industryIdentifiers[0].type + ' ' + book.volumeInfo.industryIdentifiers[0].identifier}));
+      console.log(books);
+      res.render('pages/search/show', {books: books});
     })
 }
 module.exports = {
