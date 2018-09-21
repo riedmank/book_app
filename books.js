@@ -6,6 +6,8 @@ const conString = process.env.DATABASE_URL;
 const client = new pg.Client(conString);
 client.connect();
 client.on('error', error => console.error(error));
+const superagent = require('superagent');
+
 
 const getOneBook = (req, res) => {
   let SQL = 'SELECT * FROM books WHERE book_id = $1';
@@ -44,8 +46,17 @@ const newBook = (req, res) => {
   })
 }
 
+const searchBook = (req, res) => {
+  console.log(req.query.query);
+  superagent.get(`https://www.googleapis.com/books/v1/volumes?q=${req.query.query}`)
+    .end( (err, apiResponse) => {
+      console.log(apiResponse.body.items);
+      res.redirect('/');
+    })
+}
 module.exports = {
   getOneBook: getOneBook,
   getAllBooks: getAllBooks,
-  newBook: newBook
+  newBook: newBook,
+  searchBook: searchBook
 }

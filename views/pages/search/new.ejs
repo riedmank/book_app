@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../../partials/head') %>
+  <body>
+    <%- include('../../partials/header') %>
+    <div class="card">
+      <form action="/books/search" method="GET">
+        <label>Search: <input class="input-field" type="text" name="query" required /></label>
+        <input type="submit" class="card-button">
+      </form>
+    </div>
+  </body>
+</html>
