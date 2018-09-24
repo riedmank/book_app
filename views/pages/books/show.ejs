@@ -10,6 +10,11 @@
       <%- include('../../partials/bookCard', {book: book}) %>
       <p class="card-text"><%= book.description %></p>
       <p class="card-isbn"><%= book.isbn %></p>
+      <a href="/books/<%= book.book_id %>/edit">Edit Book</a>
+      <form action="/books/<%= book.book_id %>" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <button>DELETE!</button>
+      </form>
     </div>
   </body>
 </html>

@@ -3,9 +3,6 @@
   <%- include('partials/head') %>
   <body>
     <%- include('partials/header') %>
-    <h2>Total books:
-      <%= books.length %>
-    </h2>
     <section class="books">
       <% books.forEach(book => { %>
         <div class="card in-block">
@@ -16,5 +13,6 @@
         </div>
       <% }) %>
     </section>
+    <%- include('partials/footer') %>
   </body>
 </html>
